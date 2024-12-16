@@ -26,10 +26,10 @@
     </worldbody>    
 
     <tendon>
-        <!-- Example tendon setup (add tendons here if needed) -->
+        <!-- Example tendon setup -->
     </tendon>
 
     <actuator>
-        <!-- Example actuator setup (add actuators here if needed) -->
+        <!-- Example actuator setup -->
     </actuator>
 </mujoco>
