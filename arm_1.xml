@@ -1,0 +1,37 @@
+<mujoco model="Arm">
+    <option gravity="0 0 -9.81" timestep="0.01"/>
+
+    <worldbody>
+        <!-- Shoulder Sphere and Ball Joint -->
+        <body name="shoulder" pos="0 0 0">
+            <!-- Shoulder Ball Joint -->
+            <joint name="shoulder_joint" type="ball" />
+            <!-- Shoulder Geometry (Blue Sphere) -->
+            <geom name="geom_shoulder" type="sphere" size="0.07" rgba="0 0 255 1" />
+
+            <!-- Upper Arm (Red Rod) Extending Downward -->
+            <body name="upper_arm" pos="0 0 0">
+                <!-- Upper Arm Geometry -->
+                <geom name="geom_upperarm" type="capsule" size="0.05 0.2" fromto="0 0 -0.07 0 0 -0.27" rgba="255 0 0 1" />
+
+                <!-- Elbow Sphere Positioned at Bottom of Upper Arm -->
+                <body name="elbow" pos="0 0 -0.27">
+                    <!-- Elbow Sphere Geometry (Blue) -->
+                    <geom name="geom_elbow" type="sphere" size="0.06" rgba="0 0 255 1" />
+                    <!-- Elbow Hinge Joint -->
+                    <joint name="elbow_joint" type="hinge" axis="0 1 0" range="0 135" />
+
+                    <!-- Forearm (Green Rod) Extending from Elbow -->
+                    <body name="forearm" pos="0 0 0">
+                        <!-- Forearm Geometry -->
+                        <geom name="geom_forearm" type="capsule" size="0.05 0.2" fromto="0 0 0 0 0 -0.2" rgba="0 255 0 1" />
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+      <actuator>
+        <!-- Motor to Control the Elbow Hinge Joint -->
+        <motor name="elbow_motor" joint="elbow_joint" ctrlrange="0 180" gear="1"/>
+    </actuator>
+</mujoco>
