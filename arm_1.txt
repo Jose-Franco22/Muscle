@@ -1,35 +1,103 @@
 <mujoco model="Arm">
-    <worldbody>
-        <!-- shoulder body -->
-        <body name="shoulder" pos="0 0 0">
-            <joint name="joint_0" type="ball" axis="0 0 1"/>
-            <geom name="geom_0" type="sphere" size="0.05" rgba="0 0 255 2" />
+	<option gravity="0 0 -9.81" timestep="0.01"/>
 
-            <!-- arm body -->
-            <body name="arm" pos="0 0 0.25">
-                <joint name="joint_1" type="hinge" axis="0 0 1" />
-                <geom name="geom_1" type="capsule" size="0.05 0.2" rgba="255 0 0 2" />
-      
-        	<!-- shoulder body -->
-        	<body name="elbow" pos="0 0 0.275">
-            		<joint name="joint_2" type="ball" axis="0 0 1"/>
-            		<geom name="geom_2" type="sphere" size="0.05" rgba="0 0 255 2" />
+
+<asset>
+	<texture type="skybox" builtin="gradient" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="512"/>
+	<texture name="texplane" type="2d" builtin="checker" rgb1=".25 .25 .25" rgb2=".3 .3 .3" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+	<material name="matplane" reflectance="0" texture="texplane" texrepeat="1 1" texuniform="true"/>
+</asset>
+
+<worldbody>
+
+
+	<!-- Floor -->
+	<geom name="floor" pos="0 0 0" size="0 0 1" type="plane" material="matplane"/>
+	<light directional="true"/>
+
+
+
+        <!-- Shoulder Sphere and Ball Joint -->
+        <body name="shoulder" pos="0 0 1">
+
+	<!-- Shoulder Site -->
+	<site name="site1" type="sphere" pos="0 0 0" rgba="0 255 255 1" /> 
+	<site name="site2" type="sphere" pos="0.07 0 -.08" rgba="0 255 255 1"/>
+	<site name="site3" type="sphere" pos="0.07 0 -.2" rgba="0 255 255 1"/>  
 		
-                <!-- forearm -->
-                	<body name="forearm" pos="0 0 0">
-                    		<joint name="joint_3" type="hinge" axis="1 0 0" />
-                    		<geom name="geom_3" type="capsule" size="0.05 0.2" fromto="0 0 0 -0.5 0 0" rgba="0 255 0 1" />
-		   </body>
+	<!-- Shoulder Ball Joint -->
+        <joint name="shoulder_joint" type="ball" />
+
+        <!-- Shoulder Geometry (Blue Sphere) -->
+        <geom name="geom_shoulder" type="sphere" size="0.07" rgba="0 0 255 1" />
+
+
+            <!-- Upper Arm (Red Rod) Extending Downward -->
+            <body name="upper_arm" pos="0 0 0">
+
+            <!-- Upper Arm Geometry -->
+            <geom name="geom_upperarm" type="capsule" size="0.05 0.2" fromto="0 0 0 0 0 -0.27" rgba="255 0 0 1" />
+
+
+                <!-- Elbow Sphere Positioned at Bottom of Upper Arm -->
+                <body name="elbow" pos="0 0 -0.27">
+
+                <!-- Elbow Sphere Geometry (Blue) -->
+                <geom name="geom_elbow" type="sphere" size="0.06" rgba="0 0 255 1" />
+
+                <!-- Elbow Hinge Joint -->
+                <joint name="elbow_joint" type="hinge" axis="0 1 0" range="0 135" />
+
+
+                    <!-- Forearm (Green Rod) Extending from Elbow -->
+                    <body name="forearm" pos="0 0 0">
+
+		    <!-- Forearm Site -->
+		    <site name="site4" type="sphere" pos="0 0 -0.07" rgba="0 255 255 1"/> 
+
+                    <!-- Forearm Geometry -->
+                    <geom name="geom_forearm" type="capsule" size="0.05 0.2" fromto="0 0 0 0 0 -0.2" rgba="0 255 0 1" />
+
+
+                    </body>
                 </body>
             </body>
-        </body>
-    </worldbody>    
+	</body>
+</worldbody>
 
-    <tendon>
-        <!-- Example tendon setup -->
-    </tendon>
 
-    <actuator>
-        <!-- Example actuator setup -->
+<tendon>
+	<spatial name="spatial1" width="0.001" range="0.1 0.2"> 
+	<site site="site1"/>
+	<geom geom="geom_shoulder"/>
+	<site site="site2"/>
+	</spatial>
+</tendon>
+
+<tendon>
+	<spatial name="spatial2" width="0.001" range="0.1 0.2"> 
+	<site site="site2"/>
+	<geom geom="geom_shoulder"/>
+	<site site="site3"/>
+	</spatial>
+</tendon>
+
+<tendon>
+	<spatial name="spatial3" width="0.001" range="0.1 0.2"> 
+	<site site="site3"/>
+	<geom geom="geom_elbow"/>
+	<site site="site4"/>
+	</spatial>
+</tendon>
+
+
+
+
+      <actuator>
+        <!-- Muscles (not working) -->
+        <muscle name="spatial1" tendon="spatial1" lengthrange="0 5" ctrlrange="0 5"/>
+	<muscle name="spatial2" tendon="spatial2" lengthrange="0 5" ctrlrange="0 5"/>
+	<muscle name="spatial3" tendon="spatial3" lengthrange="0 5" ctrlrange="0 5"/>
+	
     </actuator>
 </mujoco>
