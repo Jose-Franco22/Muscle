@@ -4,7 +4,7 @@ import time
 from mujoco.viewer import launch
 
 # Load the MuJoCo model
-model = mujoco.MjModel.from_xml_path("arm_1.xml")  # Ensure your XML file name matches
+model = mujoco.MjModel.from_xml_path("model.xml")  # Ensure your XML file name matches
 data = mujoco.MjData(model)
 
 # Simulation duration
