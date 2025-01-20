@@ -105,7 +105,14 @@
                             <body name="lower_leg" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                  <!-- Calf Placement -->
+                                <body name="calf_left" pos="0 0.1 -0.19"> <!-- Position between knee and ankle -->
+                                    <geom name="calf_left_geom" type="capsule" size="0.02 0.04"  rgba="0.5 0.5 0.5 1"/>
+                                </body>
 
+                                <!-- Additional sites for Achilles tendons -->
+                                <site name="achilles_site3"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
+                            
                                 <!-- Ankle -->
                                 <body name="ankle" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
@@ -155,6 +162,13 @@
                             <body name="lower_leg_right" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg_right" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                <!-- Calf Placement -->
+                                 <body name="calf_right" pos="0 0.1 -0.19"> <!-- Position between knee and ankle -->
+                                    <geom name="calf_right_geom" type="capsule" size="0.02 0.04"  rgba="0.5 0.5 0.5 1"/>
+                                </body>
+                               
+                               <!-- Additional sites for Achilles tendons -->
+                                <site name="achilles_site3_right"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
 
                                 <!-- Ankle -->
                                 <body name="ankle_right_right" pos="0 0 -0.3">
@@ -176,6 +190,7 @@
             </body>
         </body>
     </worldbody>
+
 
     <!-- Tendons -->
     <tendon>
@@ -236,8 +251,26 @@
             <geom geom="knee_geom_right" sidesite="x2_right"/>
             <site site="quad_site3_right"/>
         </spatial>
-    </tendon>
 
+        <!-- Achilles tendon -->
+         
+         <spatial name="achilles_tendon" width="0.003" rgba=".6 .4 .6 1" group="1">
+            <site site="achilles_site3"/>
+            <geom geom="ankle_geom"/>
+            <site site="x2"/>
+        </spatial>
+
+        <!--Achilles tendon (right side)-->
+        <spatial name="achilles_tendon_right" width="0.003" rgba=".6 .4 .6 1" group="1">
+            <site site="achilles_site3_right"/>
+            <geom geom="ankle_geom"/>
+            <site site="x2_right"/>
+        </spatial>
+         
+       
+
+    </tendon>
+    
     <!-- Actuators -->
     <actuator>
 
@@ -256,6 +289,6 @@
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
 
-
+    
     </actuator>
 </mujoco>
