@@ -107,11 +107,12 @@
                                 <geom name="lower_leg" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
                                   <!-- Calf Placement -->
                                 <body name="calf_left" pos="0 0.1 -0.19"> <!-- Position between knee and ankle -->
+                                    <joint name="calf_joint" type="hinge" axis="1 0 0" range="-5 120"/>   
                                     <geom name="calf_left_geom" type="capsule" size="0.02 0.04"  rgba="0.5 0.5 0.5 1"/>
                                 </body>
 
                                 <!-- Additional sites for Achilles tendons -->
-                                <site name="achilles_site3"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
+                                <site name="achilles_site3_left"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
                             
                                 <!-- Ankle -->
                                 <body name="ankle" pos="0 0 -0.3">
@@ -164,12 +165,13 @@
                                 <geom name="lower_leg_right" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
                                 <!-- Calf Placement -->
                                  <body name="calf_right" pos="0 0.1 -0.19"> <!-- Position between knee and ankle -->
+                                    <joint name="calf_joint_right" type="hinge" axis="1 0 0" range="-5 120"/>
                                     <geom name="calf_right_geom" type="capsule" size="0.02 0.04"  rgba="0.5 0.5 0.5 1"/>
                                 </body>
                                
                                <!-- Additional sites for Achilles tendons -->
                                 <site name="achilles_site3_right"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
-
+                                
                                 <!-- Ankle -->
                                 <body name="ankle_right_right" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
@@ -255,7 +257,7 @@
         <!-- Achilles tendon -->
          
          <spatial name="achilles_tendon" width="0.003" rgba=".6 .4 .6 1" group="1">
-            <site site="achilles_site3"/>
+            <site site="achilles_site3_left"/>
             <geom geom="ankle_geom"/>
             <site site="x2"/>
         </spatial>
@@ -267,9 +269,21 @@
             <site site="x2_right"/>
         </spatial>
          
-       
+        <spatial name="calf_tendon_left" width="0.003" rgba=".8 .5 .2 1" group="1">
+            <site site="achilles_site3_left"/>
+            <geom geom="ankle_geom"/>
+            <site site="x2"/>
+        </spatial>
+
+        <!-- Right Calf Tendon -->
+        <spatial name="calf_tendon_right" width="0.003" rgba=".8 .5 .2 1" group="1">
+            <site site="achilles_site3_right"/>
+            <geom geom="ankle_geom"/>
+            <site site="x2_right"/>
+        </spatial>
 
     </tendon>
+    
     
     <!-- Actuators -->
     <actuator>
@@ -289,6 +303,10 @@
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
 
-    
+         <!-- Left calf muscle actuator -->
+        <muscle name="calf_left" tendon="calf_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <!-- Right calf muscle actuator -->
+        <muscle name="calf_right" tendon="calf_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
     </actuator>
 </mujoco>
