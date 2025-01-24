@@ -105,31 +105,23 @@
                             <body name="lower_leg" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                <site name="calf_front_site_left" pos="0 -0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
+                                <site name="calf_back_site_left" pos="0 0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
 
-                                 <!-- Left Pulley -->
-                                <body name="pulley_left" pos="0 0.05 -0.15">
-                                    <geom name="pulley_geom_left" type="sphere" size="0.03" rgba="1 1 0 1"/>
-                                    <site name="pulley_site_left" pos="0 0 0" size="0.02" rgba="1 1 0 1"/>
-                                </body>
-                                
-                                 <site name="calf_knee_site_left" pos="0 0.06 -0.1" size="0.01" rgba="1 0 0 1"/>
-
-                                <!-- Additional sites for Achilles tendons -->
-                                <site name="achilles_site3_left"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
-                            
                                 <!-- Ankle -->
                                 <body name="ankle" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
                                     <joint name="ankle_joint" type="hinge" axis="1 0 0"/>
                                     <!-- Ankle geometry -->
                                     <geom name="ankle_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
+                                    <site name="achilles_front_site_left"  size="0.02" pos="0 -0.08 -0.01" rgba="1 0 0 1"/>
+                                    <site name="achilles_back_site_left"  size="0.02" pos="0 0.01 -0.01" rgba="1 0 0 1"/>
 
-                                    <site name="calf_ankle_site_left" pos="0 0 -0.05" size="0.01" rgba="0 1 0 1"/>
 
                                     <!-- Foot -->
-                                    <body name="foot" pos="0 -0.09 -0.05">
+                                    <body name="foot" pos="0 -0.05 -0.05">
                                         <!-- Foot geometry -->
-                                        <geom name="foot_geom" type="box" size="0.06 0.15 0.02" rgba="255 0 0 1"/>
+                                        <geom name="foot_geom" type="box" size="0.06 0.12 0.02" rgba="255 0 0 1"/>
                                     </body>
                                 </body>
                             </body>
@@ -164,35 +156,27 @@
                             <site name="quad_site3_right" pos="0 -0.06 -0.10" size="0.02" rgba="1 0 1 1"/>
                             <site name="x2_right" pos="0 -0.2 0" size="0.02" rgba="0 1 0 1"/>
 
+
                             <!-- Lower leg -->
                             <body name="lower_leg_right" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg_right" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                <site name="calf_front_site_right" pos="0 -0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
+                                <site name="calf_back_site_right" pos="0 0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
 
-                                <!-- Right Pulley -->
-                                <body name="pulley_right" pos="0 0.05 -0.15">
-                                    <geom name="pulley_geom_right" type="sphere" size="0.03" rgba="1 1 0 1"/>
-                                    <site name="pulley_site_right" pos="0 0 0" size="0.02" rgba="1 1 0 1"/>
-                                </body>
-                               
-                                <site name="calf_knee_site_right" pos="0 0.06 -0.1" size="0.01" rgba="1 0 0 1"/>
-
-                               <!-- Additional sites for Achilles tendons -->
-                                <site name="achilles_site3_right"  size="0.02" pos="0 0.06 -0.30" rgba="1 0 0 1"/>
-                                
                                 <!-- Ankle -->
                                 <body name="ankle_right_right" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
                                     <joint name="ankle_right_joint" type="hinge" axis="1 0 0"/>
                                     <!-- Ankle geometry -->
                                     <geom name="ankle_right_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
-
-                                    <site name="calf_ankle_site_right" pos="0 0 -0.05" size="0.01" rgba="0 1 0 1"/>
+                                    <site name="achilles_front_site_right"  size="0.02" pos="0 -0.08 -0.01" rgba="1 0 0 1"/>
+                                    <site name="achilles_back_site_right"  size="0.02" pos="0 0.01 -0.01" rgba="1 0 0 1"/>
 
                                     <!-- Foot -->
-                                    <body name="foot_right" pos="0 -0.09 -0.05">
+                                    <body name="foot_right" pos="0 -0.05 -0.05">
                                         <!-- Foot geometry -->
-                                        <geom name="foot_right_geom" type="box" size="0.06 0.15 0.02" rgba="255 0 0 1"/>
+                                        <geom name="foot_right_geom" type="box" size="0.06 0.12 0.02" rgba="255 0 0 1"/>
                                     </body>
                                 </body>
                             </body>
@@ -202,7 +186,6 @@
             </body>
         </body>
     </worldbody>
-
 
     <!-- Tendons -->
     <tendon>
@@ -230,7 +213,6 @@
             <site site="site1"/>
             <geom geom="hip_geom"/>
             <site site="ham_site2"/>
-            <site site="pulley_site_left"/>
             <geom geom="knee_geom"/>
             <site site="ham_site3"/>
         </spatial>
@@ -252,7 +234,6 @@
             <site site="site1_right"/>
             <geom geom="hip_geom_right"/>
             <site site="ham_site2_right"/>
-            <site site="pulley_site_right"/>
             <geom geom="knee_geom_right"/>
             <site site="ham_site3_right"/>
         </spatial>
@@ -266,36 +247,39 @@
             <site site="quad_site3_right"/>
         </spatial>
 
-        <!-- Achilles tendon -->
-         
-         <spatial name="achilles_tendon" width="0.003" rgba=".6 .4 .6 1" group="1">
-            <site site="achilles_site3_left"/>
-            <geom geom="ankle_geom"/>
-            <site site="x2"/>
+
+        <spatial name="calf_front_tendon_right" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="quad_site3_right"/>
+            <site site="calf_front_site_right"/>
+            <site site="achilles_front_site_right"/>
         </spatial>
 
-        <!--Achilles tendon (right side)-->
-        <spatial name="achilles_tendon_right" width="0.003" rgba=".6 .4 .6 1" group="1">
-            <site site="achilles_site3_right"/>
-            <geom geom="ankle_geom"/>
-            <site site="x2_right"/>
+        <spatial name="calf_back_tendon_right" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="ham_site3_right"/>
+            <site site="calf_back_site_right"/>
+            <site site="achilles_back_site_right"/>
         </spatial>
-         
-        <!-- Left Calf Tendon -->
-        <spatial name="calf_tendon_left" width="0.01" stiffness="200" rgba="0.8 0.4 0.4 1">
-        <site site="calf_knee_site_left"/>  <!-- Attach to lower leg -->
-        <site site="calf_ankle_site_left"/> <!-- Attach to ankle -->
-    </spatial>
 
-        <!-- Right Calf Tendon -->
-       <spatial name="calf_tendon_right" width="0.01" stiffness="200" rgba="0.8 0.4 0.4 1">
-        <site site="calf_knee_site_right"/>
-        <site site="calf_ankle_site_right"/>
-    </spatial>
+        <spatial name="calf_front_tendon_left" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="quad_site3"/>
+            <site site="calf_front_site_left"/>
+            <site site="achilles_front_site_left"/>
+        </spatial>
+
+        <spatial name="calf_back_tendon_left" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="ham_site3"/>
+            <site site="calf_back_site_left"/>
+            <site site="achilles_back_site_left"/>
+        </spatial>
+
+
+
+
 
     </tendon>
-    
-    
+
+
+
     <!-- Actuators -->
     <actuator>
 
@@ -314,10 +298,14 @@
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
 
-         <!-- Left calf muscle actuator -->
-        <muscle name="calf_left" tendon="calf_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+        <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
 
-        <!-- Right calf muscle actuator -->
-        <muscle name="calf_right" tendon="calf_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+
+        <muscle name="calf_front_tendon_left" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_left" tendon="calf_back_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
     </actuator>
 </mujoco>
