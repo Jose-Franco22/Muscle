@@ -114,9 +114,9 @@
                                     <geom name="ankle_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
 
                                     <!-- Foot -->
-                                    <body name="foot" pos="0 -0.09 -0.05">
+                                    <body name="foot" pos="0 -0.05 -0.05">
                                         <!-- Foot geometry -->
-                                        <geom name="foot_geom" type="box" size="0.06 0.15 0.02" rgba="255 0 0 1"/>
+                                        <geom name="foot_geom" type="box" size="0.06 0.12 0.02" rgba="255 0 0 1"/>
                                     </body>
                                 </body>
                             </body>
@@ -151,10 +151,13 @@
                             <site name="quad_site3_right" pos="0 -0.06 -0.10" size="0.02" rgba="1 0 1 1"/>
                             <site name="x2_right" pos="0 -0.2 0" size="0.02" rgba="0 1 0 1"/>
 
+
                             <!-- Lower leg -->
                             <body name="lower_leg_right" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg_right" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                <site name="calf_front_site_right" pos="0 -0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
+                                <site name="calf_back_site_right" pos="0 0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
 
                                 <!-- Ankle -->
                                 <body name="ankle_right_right" pos="0 0 -0.3">
@@ -162,11 +165,13 @@
                                     <joint name="ankle_right_joint" type="hinge" axis="1 0 0"/>
                                     <!-- Ankle geometry -->
                                     <geom name="ankle_right_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
+                                    <site name="achilles_front_site_right"  size="0.02" pos="0 -0.08 -0.01" rgba="1 0 0 1"/>
+                                    <site name="achilles_back_site_right"  size="0.02" pos="0 0.01 -0.01" rgba="1 0 0 1"/>
 
                                     <!-- Foot -->
-                                    <body name="foot_right" pos="0 -0.09 -0.05">
+                                    <body name="foot_right" pos="0 -0.05 -0.05">
                                         <!-- Foot geometry -->
-                                        <geom name="foot_right_geom" type="box" size="0.06 0.15 0.02" rgba="255 0 0 1"/>
+                                        <geom name="foot_right_geom" type="box" size="0.06 0.12 0.02" rgba="255 0 0 1"/>
                                     </body>
                                 </body>
                             </body>
@@ -236,7 +241,25 @@
             <geom geom="knee_geom_right" sidesite="x2_right"/>
             <site site="quad_site3_right"/>
         </spatial>
+
+
+        <spatial name="calf_front_tendon_right" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="quad_site3_right"/>
+            <site site="calf_front_site_right"/>
+            <site site="achilles_front_site_right"/>
+        </spatial>
+
+        <spatial name="calf_back_tendon_right" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="ham_site3_right"/>
+            <site site="calf_back_site_right"/>
+            <site site="achilles_back_site_right"/>
+        </spatial>
+
+
+
     </tendon>
+
+
 
     <!-- Actuators -->
     <actuator>
@@ -255,6 +278,10 @@
         <muscle name="hamstring_right" tendon="hamstring_right" lengthrange="0 1" ctrlrange="0 1"/>
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
 
 
     </actuator>
