@@ -10,77 +10,33 @@
             <geom name="torso_middle" type="ellipsoid" size="0.15 0.10 0.08" pos="0 0 0" rgba="0.7 0.7 0.7 1"/>
             <!-- Bottom Section -->
             <geom name="torso_bottom" type="ellipsoid" size="0.16 0.12 0.10" pos="0 0 -0.12" rgba="0.7 0.7 0.7 1"/>
+            <!-- <joint name="torso_joint" type="hinge" axis="0 1 0" range="-25 25"/> -->
 
 
+            <site name="top_site" pos="-0.07 0 -0.1" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0" pos="-0.07 -0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0_back" pos="-0.07 0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0_side" pos="-0.15 0 -0.2" size="0.02" rgba="0 0 1 1"/>
 
-            <body name="shoulder_left" pos="-0.3 0 0.1">
-                <site name="site1_left" pos="0 0 0.1" size="0.02" rgba="0 0 1 1"/>
-                <site name="x1_left" pos="0 -0.2 0" size="0.02" rgba="1 0 0 1"/>
-<!--                <joint name="shoulder_left_joint" type="ball"/>-->
-                <geom name="shoulder_left_geom" type="sphere" size="0.07" rgba="0 0 255 1" group="1"/>
-
-                <body name="upper_arm_left" pos="0 0 0">
-                    <geom name="upper_arm_left_geom" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.27" rgba="255 0 0 1"/>
-                    <site name="site2_left" pos="0 -0.08 -0.13" size="0.02" rgba="0 1 0 1"/>
-
-                    <body name="elbow_left" pos="0 0 -0.27">
-                        <joint name="elbow_left_joint" type="hinge" axis="1 0 0"/>
-                        <geom name="elbow_left_geom" type="sphere" size="0.06" rgba="0 0 255 1" group="1"/>
-                        <site name="site3_left" pos="0 -0.06 -0.045" size="0.02" rgba="1 0 1 1"/>
-                        <site name="x2_left" pos="0 -0.2 0" size="0.02" rgba="0 1 0 1"/>
-
-
-                        <body name="forearm_left" pos="0 0 0">
-                            <geom name="forearm_left_geom" type="capsule" size="0.03 0.2" fromto="0 0 0 0 0 -0.25" rgba="0 255 0 1"/>
-
-                        </body>
-
-                    </body>
-
-                </body>
-            </body>
-
-
-            <!-- Arm -->
-            <body name="shoulder" pos="0.3 0 0.1">
-                <site name="arm_site1" pos="0 0 0.1" size="0.02" rgba="0 0 1 1"/>
-                <site name="arm_x1" pos="0 -0.2 0" size="0.02" rgba="1 0 0 1"/>
-<!--                <joint name="shoulder_joint" type="ball"/>-->
-                <geom name="geom_shoulder" type="sphere" size="0.07" rgba="0 0 255 1" group="1"/>
-
-                <body name="upper_arm" pos="0 0 0">
-                    <geom name="geom_upperarm" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.27" rgba="255 0 0 1"/>
-                    <site name="arm_site2" pos="0 -0.08 -0.13" size="0.02" rgba="0 1 0 1"/>
-
-                    <body name="elbow" pos="0 0 -0.27">
-                        <joint name="elbow_joint" type="hinge" axis="1 0 0"/>
-                        <geom name="geom_elbow" type="sphere" size="0.06" rgba="0 0 255 1" group="1"/>
-                        <site name="arm_site3" pos="0 -0.06 -0.045" size="0.02" rgba="1 0 1 1"/>
-                        <site name="arm_x2" pos="0 -0.2 0" size="0.02" rgba="0 1 0 1"/>
-
-
-                        <body name="forearm" pos="0 0 0">
-                            <geom name="geom_forearm" type="capsule" size="0.03 0.2" fromto="0 0 0 0 0 -0.25" rgba="0 255 0 1"/>
-
-                        </body>
-
-                    </body>
-
-                </body>
-            </body>
+            
 
             <!-- Pelvis -->
             <body name="pelvis" pos="0 0 -0.24">
                 <!-- Pelvis geometry -->
-                <geom name="pelvis_geom" type="ellipsoid" size="0.2 0.07 0.07" rgba="0 0 255 1"/>
-<!--                <joint name="pelvis_joint" type="ball"/>-->
+                <!-- <geom name="pelvis_geom" type="ellipsoid" size="0.2 0.07 0.09" rgba="0 0 255 1"/> -->
+            
+               <!-- <joint name="pelvis_joint" type="hinge" axis="0 0 1" range="-25 25"/> -->
 
                 <!-- Hip -->
                 <body name="hip" pos="-0.07 0 -0.06">
                     <!-- Hip site -->
                     <site name="site1" pos="0 0 0.1" size="0.02" rgba="0 0 1 1"/>
+                    <!-- <site name="side_site" pos="0 -0.05 0.25" size="0.02" rgba="0 0 1 1"/> -->
+                    
                     <!-- Hip geometry -->
                     <geom name="hip_geom" type="sphere" size="0.07" rgba="0 0 255 1" group="1"/>
+                    <joint name="hip_joint" type="hinge" axis="1 0 0" range="-90 30" />
+                    <joint name="hip_joint_side" type="hinge" axis="0 1 0" range="-30 30" />
 
                     <!-- Upper leg -->
                     <body name="upper_leg" pos="0 0 0">
@@ -88,7 +44,17 @@
                         <geom name="upper_leg_geom" type="capsule" size="0.045 0.2" fromto="0 0 0 0 0 -0.27" rgba="255 0 0 1"/>
                         <!-- Hamstring and quadriceps sites -->
                         <site name="ham_site2" pos="0 0.08 -0.08" size="0.02" rgba="0 1 0 1"/>
+                        
                         <site name="quad_site2" pos="0 -0.08 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_top_site" pos="0 -0.1 -0.1" size="0.02" rgba="0 0 1 1"/>
+                        <site name="upper_leg_top_site_back" pos="0 0.1 -0.1" size="0.02" rgba="0 0 1 1"/>
+                        <site name="upper_leg_top_site_side" pos="-0.1 0 -0.1" size="0.02" rgba="0 0 1 1"/>
+                        
+                        <site name="upper_leg" pos="0 -0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_back" pos="0 0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_side" pos="-0.06 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        
+                        
 
                         <!-- Knee -->
                         <body name="knee" pos="0 0 -0.27">
@@ -99,19 +65,25 @@
                             <!-- Additional sites for tendons -->
                             <site name="ham_site3" pos="0 0.06 -0.10" size="0.02" rgba="1 0 1 1"/>
                             <site name="quad_site3" pos="0 -0.06 -0.10" size="0.02" rgba="1 0 1 1"/>
+                            
                             <site name="x2" pos="0 -0.2 0" size="0.02" rgba="0 1 0 1"/>
 
                             <!-- Lower leg -->
                             <body name="lower_leg" pos="0 0 0">
                                 <!-- Lower leg geometry -->
                                 <geom name="lower_leg" type="capsule" size="0.04 0.2" fromto="0 0 0 0 0 -0.3" rgba="0 255 0 1"/>
+                                <site name="calf_front_site_left" pos="0 -0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
+                                <site name="calf_back_site_left" pos="0 0.06 -0.25" size="0.02" rgba="1 0 1 1"/>
 
                                 <!-- Ankle -->
                                 <body name="ankle" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
-                                    <joint name="ankle_joint" type="hinge" axis="1 0 0"/>
+                                    <joint name="ankle_joint" type="hinge" axis="1 0 0" range="-10 75"/>
                                     <!-- Ankle geometry -->
                                     <geom name="ankle_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
+                                    <site name="achilles_front_site_left"  size="0.02" pos="0 -0.08 -0.01" rgba="1 0 0 1"/>
+                                    <site name="achilles_back_site_left"  size="0.02" pos="0 0.01 -0.01" rgba="1 0 0 1"/>
+
 
                                     <!-- Foot -->
                                     <body name="foot" pos="0 -0.05 -0.05">
@@ -131,6 +103,7 @@
                     <site name="site1_right" pos="0 0 0.1" size="0.02" rgba="0 0 1 1"/>
                     <!-- Hip geometry -->
                     <geom name="hip_geom_right" type="sphere" size="0.07" rgba="0 0 255 1" group="1"/>
+                    <joint name="hip_joint_right" type="hinge" axis="1 0 0" range="-90 75" />
 
                     <!-- Upper leg -->
                     <body name="upper_leg_right" pos="0 0 0">
@@ -162,7 +135,7 @@
                                 <!-- Ankle -->
                                 <body name="ankle_right_right" pos="0 0 -0.3">
                                     <!-- Ankle joint -->
-                                    <joint name="ankle_right_joint" type="hinge" axis="1 0 0"/>
+                                    <joint name="ankle_right_joint" type="hinge" axis="1 0 0" range="-10 75"/>
                                     <!-- Ankle geometry -->
                                     <geom name="ankle_right_geom" type="sphere" size="0.05" rgba="255 43 54 1" group="1"/>
                                     <site name="achilles_front_site_right"  size="0.02" pos="0 -0.08 -0.01" rgba="1 0 0 1"/>
@@ -180,26 +153,43 @@
                 </body>
             </body>
         </body>
-    </worldbody>
+</worldbody>
 
-    <!-- Tendons -->
+
+<!-- Tendons -->
     <tendon>
-        <spatial name="bicep_left" width="0.009" rgba=".4 .6 .4 1">
-            <site site="site1_left"/>
-            <geom geom="shoulder_left_geom" sidesite="x1_left"/>
-            <site site="site2_left"/>
-            <geom geom="elbow_left_geom"/>
-            <site site="site3_left"/>
+       
+       <spatial name="upper_leg" width="0.009" rgba=".4 .6 .4 1" group="2">
+            
+            <site site="top_site"/>
+            <geom geom="hip_geom" sidesite="x0"/>
+            <site site="upper_leg_top_site"/>
+            
+            <site site="upper_leg"/>
+
+      
         </spatial>
 
+               <spatial name="upper_leg_side" width="0.009" rgba=".4 .6 .4 1" group="2">
+            
+            <site site="top_site"/>
+            <geom geom="hip_geom" sidesite="x0_side"/>
+            <site site="upper_leg_top_site_side"/>
+            
+            <site site="upper_leg_side"/>
 
+      
+        </spatial>
 
-        <spatial name="bicep" width="0.009" rgba=".4 .6 .4 1">
-            <site site="arm_site1"/>
-            <geom geom="geom_shoulder" sidesite="arm_x1"/>
-            <site site="arm_site2"/>
-            <geom geom="geom_elbow" sidesite="arm_x2"/>
-            <site site="arm_site3"/>
+         <spatial name="upper_leg_back" width="0.009" rgba=".4 .6 .4 1" group="2">
+            
+            <site site="top_site"/>
+            <geom geom="hip_geom" sidesite="x0_back"/>
+            <site site="upper_leg_top_site_back"/>
+            
+            <site site="upper_leg_back"/>
+
+      
         </spatial>
 
 
@@ -255,6 +245,20 @@
             <site site="achilles_back_site_right"/>
         </spatial>
 
+        <spatial name="calf_front_tendon_left" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="quad_site3"/>
+            <site site="calf_front_site_left"/>
+            <site site="achilles_front_site_left"/>
+        </spatial>
+
+        <spatial name="calf_back_tendon_left" width="0.009" rgba=".4 .6 .4 1" group="1">
+            <site site="ham_site3"/>
+            <site site="calf_back_site_left"/>
+            <site site="achilles_back_site_left"/>
+        </spatial>
+
+
+
 
 
     </tendon>
@@ -264,9 +268,15 @@
     <!-- Actuators -->
     <actuator>
 
-         <muscle name="bicep" tendon="bicep" lengthrange="0 5" ctrlrange="0 1"/>
 
-        <muscle name="bicep_left" tendon="bicep_left" lengthrange="0 5" ctrlrange="0 1"/>
+        <!-- Upperleg muscle -->
+        <muscle name="upper_leg" tendon="upper_leg" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+
+        <muscle name="upper_leg_side" tendon="upper_leg_side" lengthrange="0 5" ctrlrange="0 .2" group="1"/>
+
+        <muscle name="upper_leg_back" tendon="upper_leg_back" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+
+
 
         <!-- Hamstring muscle -->
         <muscle name="hamstring" tendon="hamstring" lengthrange="0 1" ctrlrange="0 1"/>
@@ -279,10 +289,17 @@
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
 
+
+
         <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
 
-        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="4 1" ctrlrange="0 1"/>
 
+
+        <muscle name="calf_front_tendon_left" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_left" tendon="calf_back_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
 
     </actuator>
+
 </mujoco>
