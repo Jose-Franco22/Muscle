@@ -289,6 +289,14 @@
         <!-- Quadriceps muscle -->
         <muscle name="quad_right" tendon="quad_right" lengthrange="0 1" ctrlrange="0 1"/>
 
+        <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+
+        <muscle name="calf_front_tendon_left" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_left" tendon="calf_back_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
 
 
         <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
@@ -303,3 +311,4 @@
     </actuator>
 
 </mujoco>
+
