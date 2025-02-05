@@ -13,12 +13,20 @@
             <!-- <joint name="torso_joint" type="hinge" axis="0 1 0" range="-25 25"/> -->
 
 
+             <!-- Left Sites -->
+
             <site name="top_site" pos="-0.07 0 -0.1" size="0.02" rgba="0 0 1 1"/>
             <site name="x0" pos="-0.07 -0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
             <site name="x0_back" pos="-0.07 0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
             <site name="x0_side" pos="-0.15 0 -0.2" size="0.02" rgba="0 0 1 1"/>
 
-            
+             
+             <!--Right Sites -->
+            <site name="top_site2" pos="0.07 0 -0.1" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0_2" pos="0.07 -0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0_back2" pos="0.07 0.1 -0.2" size="0.02" rgba="0 0 1 1"/>
+            <site name="x0_side2" pos="0.15 0 -0.2" size="0.02" rgba="0 0 1 1"/>
+
 
             <!-- Pelvis -->
             <body name="pelvis" pos="0 0 -0.24">
@@ -53,7 +61,6 @@
                         <site name="upper_leg" pos="0 -0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
                         <site name="upper_leg_back" pos="0 0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
                         <site name="upper_leg_side" pos="-0.06 0 -0.2" size="0.02" rgba="0 1 0 1"/>
-                        
                         
 
                         <!-- Knee -->
@@ -103,7 +110,8 @@
                     <site name="site1_right" pos="0 0 0.1" size="0.02" rgba="0 0 1 1"/>
                     <!-- Hip geometry -->
                     <geom name="hip_geom_right" type="sphere" size="0.07" rgba="0 0 255 1" group="1"/>
-                    <joint name="hip_joint_right" type="hinge" axis="1 0 0" range="-90 75" />
+                    <joint name="hip_joint_right" type="hinge" axis="1 0 0" range="-90 30" />
+                    <joint name="hip_joint_side_right" type="hinge" axis="0 1 0" range="-30 30" />
 
                     <!-- Upper leg -->
                     <body name="upper_leg_right" pos="0 0 0">
@@ -112,6 +120,16 @@
                         <!-- Hamstring and quadriceps sites -->
                         <site name="ham_site2_right" pos="0 0.08 -0.08" size="0.02" rgba="0 1 0 1"/>
                         <site name="quad_site2_right" pos="0 -0.08 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_top_site2" pos="0 -0.1 -0.1" size="0.02" rgba="0 0 1 1"/>
+                        <site name="upper_leg_top_site_back2" pos="0 0.1 -0.1" size="0.02" rgba="0 0 1 1"/>
+                        <site name="upper_leg_top_site_side2" pos="0.1 0 -0.1" size="0.02" rgba="0 0 1 1"/>
+
+                        <site name="upper_leg_right" pos="0 -0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_back2" pos="0 0.06 -0.2" size="0.02" rgba="0 1 0 1"/>
+                        <site name="upper_leg_side2" pos="0.06 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+
+
+
 
                         <!-- Knee -->
                         <body name="knee_right" pos="0 0 -0.27">
@@ -167,7 +185,6 @@
             
             <site site="upper_leg"/>
 
-      
         </spatial>
 
                <spatial name="upper_leg_side" width="0.009" rgba=".4 .6 .4 1" group="2">
@@ -191,6 +208,35 @@
 
       
         </spatial>
+
+      
+        <spatial name="upper_leg_right" width="0.009" rgba=".4 .6 .4 1" group="2">
+            <site site="top_site2"/> <!-- Corresponding site for the right leg -->
+            <geom geom="hip_geom_right" sidesite="x0_2"/> <!-- Corresponding hip geometry for the right leg -->
+            <site site="upper_leg_top_site2"/>
+            <site site="upper_leg_right"/>
+
+        </spatial>
+
+                <spatial name="upper_leg_side_right" width="0.009" rgba=".4 .6 .4 1" group="2">
+
+            <site site="top_site2"/>
+            <geom geom="hip_geom_right" sidesite="x0_side2"/>
+            <site site="upper_leg_top_site_side2"/>
+            <site site="upper_leg_side2"/>
+        </spatial>
+
+        <spatial name="upper_leg_back_right" width="0.009" rgba=".4 .6 .4 1" group="2">
+            <site site="top_site2"/>
+            <geom geom="hip_geom_right" sidesite="x0_back2"/>
+            <site site="upper_leg_top_site_back2"/>
+            <site site="upper_leg_back2"/>
+
+        </spatial>
+
+
+
+
 
 
         <!-- Hamstring tendon -->
@@ -277,6 +323,13 @@
         <muscle name="upper_leg_back" tendon="upper_leg_back" lengthrange="0 5" ctrlrange="0 1" group="1"/>
 
 
+        <muscle name="upper_leg_right" tendon="upper_leg_right" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+
+        <muscle name="upper_leg_side_right" tendon="upper_leg_side_right" lengthrange="0 5" ctrlrange="0 .2" group="1"/>
+
+        <muscle name="upper_leg_back_right" tendon="upper_leg_back_right" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+
+
 
         <!-- Hamstring muscle -->
         <muscle name="hamstring" tendon="hamstring" lengthrange="0 1" ctrlrange="0 1"/>
@@ -294,14 +347,18 @@
         <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
 
 
-        <muscle name="calf_front_tendon_left" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
 
-        <muscle name="calf_back_tendon_left" tendon="calf_back_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+        <muscle name="calf_front_tendon_right2" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+
+        <muscle name="calf_back_tendon_right2" tendon="calf_back_tendon_right" lengthrange="4 1" ctrlrange="0 1"/>
 
 
-        <muscle name="calf_front_tendon_right" tendon="calf_front_tendon_right" lengthrange="0 1" ctrlrange="0 1"/>
+        <muscle name="calf_front_tendon_left2" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
 
-        <muscle name="calf_back_tendon_right" tendon="calf_back_tendon_right" lengthrange="4 1" ctrlrange="0 1"/>
+        <muscle name="calf_back_tendon_left2" tendon="calf_back_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
+
+
+
 
 
         <muscle name="calf_front_tendon_left" tendon="calf_front_tendon_left" lengthrange="0 1" ctrlrange="0 1"/>
