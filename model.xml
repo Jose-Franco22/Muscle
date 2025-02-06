@@ -1,6 +1,15 @@
 <mujoco>
+    <option gravity="0 0 -9.81" timestep="0.01"/>
     <!-- World body definition -->
+
+    <asset>
+        <texture name="texplane" type="2d" builtin="checker" rgb1="0.8 0.8 0.8" rgb2="0.2 0.2 0.2" width="512" height="512" mark="cross" markrgb="1 0 0"/>
+        <material name="matplane" texture="texplane" texrepeat="4 4" texuniform="true"/>
+    </asset>
+
+
     <worldbody>
+        <geom name="floor" type="plane" size="10 10 0.1" pos="0 0 0" material="matplane" rgba="0.8 0.8 0.8 1"/>
         <!-- Base body -->
         <!-- Torso -->
         <body name="torso" pos="0 0 1.5">
@@ -10,7 +19,8 @@
             <geom name="torso_middle" type="ellipsoid" size="0.15 0.10 0.08" pos="0 0 0" rgba="0.7 0.7 0.7 1"/>
             <!-- Bottom Section -->
             <geom name="torso_bottom" type="ellipsoid" size="0.16 0.12 0.10" pos="0 0 -0.12" rgba="0.7 0.7 0.7 1"/>
-            <!-- <joint name="torso_joint" type="hinge" axis="0 1 0" range="-25 25"/> -->
+            <joint name="torso_joint" type="hinge" axis="0 1 0" range="-25 25"/>
+            
 
 
              <!-- Left Sites -->
@@ -316,11 +326,18 @@
 
 
         <!-- Upperleg muscle -->
-        <muscle name="upper_leg" tendon="upper_leg" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+        <muscle name="upper_leg" tendon="upper_leg" lengthrange="0 1" ctrlrange="0 1" group="1"/>
 
-        <muscle name="upper_leg_side" tendon="upper_leg_side" lengthrange="0 5" ctrlrange="0 .2" group="1"/>
+        <muscle name="upper_leg_side" tendon="upper_leg_side" lengthrange="0 1" ctrlrange="0 .2" group="1"/>
 
-        <muscle name="upper_leg_back" tendon="upper_leg_back" lengthrange="0 5" ctrlrange="0 1" group="1"/>
+        <muscle name="upper_leg_back" tendon="upper_leg_back" lengthrange="0 1" ctrlrange="0 1" group="1"/>
+
+
+        <muscle name="upper_leg_right" tendon="upper_leg_right" lengthrange="0 1" ctrlrange="0 1" group="1"/>
+
+        <muscle name="upper_leg_side_right" tendon="upper_leg_side_right" lengthrange="0 5" ctrlrange="0 .2" group="1"/>
+
+        <muscle name="upper_leg_back_right" tendon="upper_leg_back_right" lengthrange="0 1" ctrlrange="0 1" group="1"/>
 
 
         <muscle name="upper_leg_right" tendon="upper_leg_right" lengthrange="0 5" ctrlrange="0 1" group="1"/>
@@ -368,4 +385,3 @@
     </actuator>
 
 </mujoco>
-
