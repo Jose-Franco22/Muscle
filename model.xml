@@ -340,13 +340,6 @@
         <muscle name="upper_leg_back_right" tendon="upper_leg_back_right" lengthrange="0 1" ctrlrange="0 1" group="1"/>
 
 
-        <muscle name="upper_leg_right" tendon="upper_leg_right" lengthrange="0 5" ctrlrange="0 1" group="1"/>
-
-        <muscle name="upper_leg_side_right" tendon="upper_leg_side_right" lengthrange="0 5" ctrlrange="0 .2" group="1"/>
-
-        <muscle name="upper_leg_back_right" tendon="upper_leg_back_right" lengthrange="0 5" ctrlrange="0 1" group="1"/>
-
-
 
         <!-- Hamstring muscle -->
         <muscle name="hamstring" tendon="hamstring" lengthrange="0 1" ctrlrange="0 1"/>
